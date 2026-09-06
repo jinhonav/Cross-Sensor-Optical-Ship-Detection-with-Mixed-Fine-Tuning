@@ -399,8 +399,7 @@ Optical_Ship_Detection_Domain_Adaptation/
 │   ├── Mixed_4to1_S2_scene1.png
 │   ├── Mixed_4to1_S2_scene2.png
 │   ├── Mixed_4to1_S2_scene3.png
-│   ├── Mixed_4to1_S2_scene4.png
-│   └── Ratio_Performance_Comparison.png
+│   └── Mixed_4to1_S2_scene4.png
 │
 ├── README.md
 ├── requirements.txt
