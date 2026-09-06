@@ -163,6 +163,32 @@ The purpose of this model is to visualize what happens when the detector is adap
 
 Its predictions on the same four unseen Sentinel-2 scenes are compared with both the original LEVIR-only detector and the final mixed fine-tuned detector.
 
+### Source-Domain Performance After S2SD-Only Fine-Tuning
+
+After fine-tuning the LEVIR-trained detector exclusively on S2SD, 
+the model was evaluated again on the independent LEVIR test set.
+
+| Metric | LEVIR-Only Baseline | S2SD-Only FT |
+|---|---:|---:|
+| Precision | 0.8703 | **0.0129** |
+| Recall | 0.8678 | **0.0417** |
+| mAP@0.5 | 0.8622 | **0.0006** |
+| mAP@0.5:0.95 | 0.3172 | **0.0001** |
+
+The source-domain performance collapsed after target-only fine-tuning:
+
+> **LEVIR mAP@0.5: 0.8622 → 0.0006**
+
+This result demonstrates severe **catastrophic forgetting**.  
+Although S2SD-only fine-tuning produces stronger responses on unseen
+Sentinel-2 imagery, the detector almost completely loses its original
+LEVIR-domain detection capability.
+
+This motivates the use of **mixed fine-tuning**, where LEVIR samples
+are replayed together with S2SD samples to adapt the detector to the
+new sensor domain while preserving previously learned source-domain
+capability.
+
 ## Mixed Fine-Tuning Strategy
 
 Instead of fine-tuning exclusively on Sentinel-2, source and target samples are mixed:
@@ -190,10 +216,10 @@ Mixed models were fine-tuned for **30 epochs**.
 | Training Strategy | Precision | Recall | mAP@0.5 | mAP@0.5:0.95 |
 |---|---:|---:|---:|---:|
 | **LEVIR-only baseline** | **0.8703** | **0.8678** | **0.8622** | **0.3172** |
+| S2SD-only FT | 0.0129 | 0.0417 | 0.0006 | 0.0001 |
 | Mixed FT 2:1 | 0.7578 | 0.6938 | 0.7730 | 0.2908 |
-| **Mixed FT 4:1 (best.pt)** | **0.7958** | **0.7717** | **0.7986** | **0.2749** |
-| Mixed FT 5:1 (best.pt) | 0.7817 | 0.7319 | 0.7650 | 0.2575 |
-| Mixed FT 5:1 (last.pt) | 0.7750 | 0.7717 | 0.7829 | 0.2685 |
+| **Mixed FT 4:1** | **0.7958** | **0.7717** | **0.7986** | **0.2749** |
+| Mixed FT 5:1 | 0.7817 | 0.7319 | 0.7650 | 0.2575 |
 
 Additional ratios can be added when their final independent test results are available.
 
