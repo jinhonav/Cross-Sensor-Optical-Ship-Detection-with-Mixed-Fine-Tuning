@@ -375,10 +375,11 @@ Therefore:
 Optical_Ship_Detection_Domain_Adaptation/
 │
 ├── notebooks/
-│   ├── Train_YOLO_LEVIR.ipynb
-│   ├── Mixed_Finetune_LEVIR_Sentinel2.ipynb
-│   ├── Test_LEVIR.ipynb
-│   └── Sentinel2_Inference.ipynb
+│   ├── Train_YOLO.ipynb
+│   ├── Fine_Tuning.ipynb
+│   ├── Mixed_Finetuning.ipynb
+│   ├── Test_LEVIR_Dataset.ipynb
+│   └── Visualization_Result.ipynb
 │
 ├── figures/
 │   ├── Workflow.png
