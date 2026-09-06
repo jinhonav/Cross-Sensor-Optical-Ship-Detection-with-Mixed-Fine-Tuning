@@ -37,6 +37,10 @@ Rather than training only a target-specific detector, this project studies a dep
 
 This makes the project an **adaptation–retention trade-off** problem rather than a simple benchmark-maximization task.
 
+## Workflow
+
+![Workflow](figures/Workflow.png)
+
 ## Cross-Sensor Setting
 
 | Property | Source Domain | Target Domain |
@@ -405,31 +409,6 @@ Optical_Ship_Detection_Domain_Adaptation/
 ```
 
 Adjust notebook and figure names to match the repository.
-
-## Suggested Summary Figure
-
-```text
-               LEVIR-Ship
-                GF-1/GF-6
-                    │
-                    ▼
-             YOLO26-S Baseline
-                    │
-       ┌────────────┴────────────┐
-       ▼                         ▼
-  LEVIR Test                Sentinel-2
-mAP50 = 0.8622              Domain Gap
-                                 │
-                                 ▼
-                      Mixed Fine-Tuning
-                      LEVIR : S2 = 4 : 1
-                                 │
-                   ┌─────────────┴─────────────┐
-                   ▼                           ▼
-              LEVIR Test                Busan Sentinel-2
-            mAP50 = 0.7986             Qualitative Inference
-            92.6% retained
-```
 
 ## Requirements
 
